@@ -1,37 +1,39 @@
-import { useState } from 'react';
+// import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import ProgressIndicator from './components/ProgressIndicator';
-import QuestionBox from './components/QuestionBox';
+import PageOne from './pages/pageOne';
+import PageTwo from './pages/PageTwo';
 
 export default function App() {
-  const questions = [
-    {
-      title: '질문1',
-      desc: '설명1',
-      type: 'text',
-      options: {},
-      required: false,
-    },
-    {
-      title: '질문2',
-      desc: '설명2',
-      type: 'text',
-      options: {},
-      required: false,
-    },
-    {
-      title: '질문3',
-      desc: '설명3',
-      type: 'text',
-      options: {},
-      required: false,
-    },
-  ];
-  const step = 0;
-  const [answers, setAnswers] = useState([]);
+  // const questions = [
+  //   {
+  //     title: '질문1',
+  //     desc: '설명1',
+  //     type: 'text',
+  //     options: {},
+  //     required: false,
+  //   },
+  //   {
+  //     title: '질문2',
+  //     desc: '설명2',
+  //     type: 'text',
+  //     options: {},
+  //     required: false,
+  //   },
+  //   {
+  //     title: '질문3',
+  //     desc: '설명3',
+  //     type: 'text',
+  //     options: {},
+  //     required: false,
+  //   },
+  // ];
+  // const step = 0;
+  // const [answers, setAnswers] = useState([]);
 
   return (
     <div className="App">
+      {/* 
       <ProgressIndicator />
       <QuestionBox
         question={questions[step]}
@@ -47,7 +49,12 @@ export default function App() {
             return newAnswer;
           });
         }}
-      />
+        />
+      */}
+      <Routes>
+        <Route path="/" element={<PageOne />} />
+        <Route path="/two" element={<PageTwo />} />
+      </Routes>
     </div>
   );
 }
