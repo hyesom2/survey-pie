@@ -1,59 +1,16 @@
-// import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import PageOne from './pages/pageOne';
-import PageTwo from './pages/PageTwo';
+import CompletionPage from './pages/CompletionPage';
+import SurveyPage from './pages/SurveyPage';
 
 export default function App() {
-  // const questions = [
-  //   {
-  //     title: '질문1',
-  //     desc: '설명1',
-  //     type: 'text',
-  //     options: {},
-  //     required: false,
-  //   },
-  //   {
-  //     title: '질문2',
-  //     desc: '설명2',
-  //     type: 'text',
-  //     options: {},
-  //     required: false,
-  //   },
-  //   {
-  //     title: '질문3',
-  //     desc: '설명3',
-  //     type: 'text',
-  //     options: {},
-  //     required: false,
-  //   },
-  // ];
-  // const step = 0;
-  // const [answers, setAnswers] = useState([]);
-
   return (
     <div className="App">
-      {/* 
-      <ProgressIndicator />
-      <QuestionBox
-        question={questions[step]}
-        step={step}
-        questionsLength={questions.length}
-        // answers={answers} // step번째 답변만 받아오도록
-        answer={answers[step]}
-        // setAnswers={setAnswers} 전체를 통으로 바꾸는 것이 아닌 answer가 아닌 사용자가 답변을 입력을 한 값만 변경되도록
-        setAnswer={(newAnswer) => {
-          setAnswers((answer) => {
-            const newAnswers = [...answer];
-            newAnswers[step] = newAnswer;
-            return newAnswer;
-          });
-        }}
-        />
-      */}
       <Routes>
-        <Route path="/" element={<PageOne />} />
-        <Route path="/two" element={<PageTwo />} />
+        <Route path="/survey/:id" element={<SurveyPage />}>
+          <Route path=":step" element={<CompletionPage />} />
+        </Route>
+        <Route path="/dome" element={<CompletionPage />} />
       </Routes>
     </div>
   );
