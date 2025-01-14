@@ -10,7 +10,7 @@ export default function App() {
         <Route path="/survey/:id" element={<SurveyPage />}>
           <Route path=":step" element={<CompletionPage />} />
         </Route>
-        <Route path="/dome" element={<CompletionPage />} />
+        <Route path="/done" element={<CompletionPage />} />
       </Routes>
     </div>
   );
