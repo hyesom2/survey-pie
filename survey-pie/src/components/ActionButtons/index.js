@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Button from '../Button/Button';
 
@@ -7,7 +8,7 @@ export default function ActionButtons({ step, questionsLength }) {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <ButtonWrapper>
       {step === 0 || (
         <Button
           type="SECONDARY"
@@ -37,6 +38,14 @@ export default function ActionButtons({ step, questionsLength }) {
           다음
         </Button>
       )}
-    </div>
+    </ButtonWrapper>
   );
 }
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+`;

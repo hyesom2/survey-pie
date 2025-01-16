@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 import ActionButtons from '../ActionButtons';
 import Body from '../Body';
 import Desc from '../Desc';
@@ -11,7 +13,7 @@ export default function QuestionBox({
   setAnswer,
 }) {
   return (
-    <div>
+    <QuestionBoxWrapper>
       <Title>{question.title}</Title>
       <Desc>{question.desc}</Desc>
       <Body
@@ -21,6 +23,15 @@ export default function QuestionBox({
         options={question.options}
       />
       <ActionButtons step={step} questionsLength={questionsLength} />
-    </div>
+    </QuestionBoxWrapper>
   );
 }
+
+const QuestionBoxWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+`;

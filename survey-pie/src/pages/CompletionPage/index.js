@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
-const a = 1;
+import Button from '../../components/Button/Button';
 
 export default function CompletionPage() {
-  return <CompletionPageWrapper>CompletionPage</CompletionPageWrapper>;
+  return (
+    <CompletionPageWrapper>
+      <h1>설문이 완료되었습니다.</h1>
+      <Button type="TERTIARY">새로운 응답 제출하기</Button>
+    </CompletionPageWrapper>
+  );
 }
 
-const CompletionPageWrapper = styled.div`
-  background-color: ${a === 123 ? 'aqua' : 'pink'};
-`;
+const CompletionPageWrapper = styled.div``;
