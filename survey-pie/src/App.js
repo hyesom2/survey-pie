@@ -9,7 +9,7 @@ export default function App() {
     <AppWrapper>
       <BoxWrapper>
         <Routes>
-          <Route path="/survey/:id" element={<SurveyPage />}>
+          <Route path="/survey/:surveyId" element={<SurveyPage />}>
             <Route path=":step" element={<SurveyPage />} />
           </Route>
           <Route path="/done" element={<CompletionPage />} />
