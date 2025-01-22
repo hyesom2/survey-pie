@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export default function TextInput({ answer, setAnswer, options }) {
+export default function TextInput({ answer = '', setAnswer, options }) {
   return (
     <Input
       type="text"

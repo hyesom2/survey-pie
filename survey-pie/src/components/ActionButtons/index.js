@@ -2,14 +2,19 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
+import useAnswers from '../../hooks/useAnswers';
 import useStep from '../../hooks/useStep';
+import useSurveyId from '../../hooks/useSurveyId';
+import postAnswers from '../../services/postAnswers';
 import questionsLengthState from '../../stores/survey/questionsLengthState';
 import Button from '../Button/Button';
 
 export default function ActionButtons() {
   const navigate = useNavigate();
   const step = useStep();
+  const surveyId = useSurveyId();
   const questionsLength = useRecoilValue(questionsLengthState);
+  const answers = useAnswers();
   const isLastStep = questionsLength - 1 === step;
 
   return (
@@ -28,6 +33,8 @@ export default function ActionButtons() {
         <Button
           type="PRIMARY"
           onClick={() => {
+            // 제출을 눌렀을 때 postAnswers
+            postAnswers(surveyId, answers);
             navigate('/done');
           }}
         >
