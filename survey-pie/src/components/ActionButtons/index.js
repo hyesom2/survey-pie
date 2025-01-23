@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
@@ -16,6 +17,7 @@ export default function ActionButtons() {
   const questionsLength = useRecoilValue(questionsLengthState);
   const answers = useAnswers();
   const isLastStep = questionsLength - 1 === step;
+  const [success, setSuccess] = useState(false);
 
   return (
     <ButtonWrapper>
@@ -34,11 +36,20 @@ export default function ActionButtons() {
           type="PRIMARY"
           onClick={() => {
             // 제출을 눌렀을 때 postAnswers
-            postAnswers(surveyId, answers);
-            navigate('/done');
+            setSuccess(true);
+            postAnswers(surveyId, answers)
+              .then(() => {
+                navigate(`/done/${surveyId}`);
+              })
+              .catch((error) => {
+                console.log(error.response);
+                alert('오류가 발생했습니다.');
+                setSuccess(false);
+              });
           }}
+          disabled={success}
         >
-          제출
+          {success ? '제출 중 입니다...' : '제출'}
         </Button>
       ) : (
         <Button
