@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-function Item({ children, onChange }) {
+function Item({ children, onChange, checked }) {
   return (
     <ItemWrapper>
       <label>
-        <input type="checkbox" onChange={onChange} />
-        {/* input : css로 숨긴 후, check여부만 */}
-        <span /> {/* span : css디자인만 따로 */}
+        <input type="checkbox" onChange={onChange} checked={checked} />
+        {/* 아이템이 체크가 된 상태여야 하는지 앙닌지를 위해 props로 전달 */}
+        <span />
         <div>{children}</div>
       </label>
     </ItemWrapper>
@@ -16,10 +16,12 @@ function Item({ children, onChange }) {
 export default function SelectInput({ answer = [], setAnswer, options }) {
   const handleOnChecked = (isChecked, index) => {
     if (isChecked) {
-      // setAnswer(index추가)
+      const max = options?.max ?? 1; // options.max를 max변수에 넣는데, max값이 없을 때는 1
+      if (answer.length >= max) {
+        return;
+      }
       setAnswer([...answer, index]);
     } else {
-      // setAnswer(index삭제)
       setAnswer(answer.filter((item) => item !== index));
     }
   };
@@ -31,6 +33,8 @@ export default function SelectInput({ answer = [], setAnswer, options }) {
           <Item
             key={index}
             onChange={(e) => handleOnChecked(e.target.checked, index)}
+            checked={answer.includes(index)}
+            // answer에 index값이 포함이 되어있는지 안되어있는지 checked로 값을 넘겨준다.
           >
             {item}
           </Item>

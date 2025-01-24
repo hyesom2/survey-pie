@@ -4,6 +4,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
 import useAnswers from '../../hooks/useAnswers';
+import useRequiredOption from '../../hooks/useRequiredOption';
 import useStep from '../../hooks/useStep';
 import useSurveyId from '../../hooks/useSurveyId';
 import postAnswers from '../../services/postAnswers';
@@ -18,6 +19,8 @@ export default function ActionButtons() {
   const answers = useAnswers();
   const isLastStep = questionsLength - 1 === step;
   const [success, setSuccess] = useState(false);
+  const isRequired = useRequiredOption();
+  const isBlockToNext = isRequired ? !answers[step]?.length : false;
 
   return (
     <ButtonWrapper>
@@ -47,7 +50,7 @@ export default function ActionButtons() {
                 setSuccess(false);
               });
           }}
-          disabled={success}
+          disabled={success || isBlockToNext}
         >
           {success ? '제출 중 입니다...' : '제출'}
         </Button>
@@ -57,6 +60,7 @@ export default function ActionButtons() {
           onClick={() => {
             navigate(`${step + 1}`);
           }}
+          disabled={isBlockToNext}
         >
           다음
         </Button>

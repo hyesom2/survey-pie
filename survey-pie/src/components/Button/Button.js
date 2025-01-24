@@ -77,6 +77,12 @@ const Button = styled.button`
     background-color: ${({ type }) => colorMap[type].BUTTON.PRESSED.BACKGROUND};
     border-color: ${({ type }) => colorMap[type].BUTTON.PRESSED.BORDER};
   }
+
+  &:disabled {
+    color: ${({ type }) => colorMap[type].BUTTON.DISABLED.COLOR};
+    background-color: ${({ type }) =>
+      colorMap[type].BUTTON.DISABLED.BACKGROUND};
+  }
 `;
 
 export default Button;
