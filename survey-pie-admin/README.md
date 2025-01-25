@@ -1,8 +1,29 @@
-# React + Vite
+# Survey Pie Admin
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# ※ 요구사항
 
-Currently, two official plugins are available:
+- 설문조사 관리 페이지 : 설문조사 리스트가 보여지는 화면
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. 사이드바 <br />
+   ① 관리자의 페이지 목록이 나열되는 영역
+2. 현재 페이지 타이틀 <br />
+   ① 현재 페이지의 타이틀이 노출됨
+3. 설문조사 생성 버튼 <br />
+   ① 버튼 클릭 시, 설문조사 생성 페이지로 이동
+4. 설문조사 리스트 <br />
+   ① 저장된 설문조사들이 나열됨 <br />
+   ② 노출 정보 : 설문조사 고유번호, 제목, 생성일(yyyy-MM-dd) <br />
+   ③ 마지막 열은 액션 항목으로 해당 설문조사를 삭제할 수 있는 버튼이 있음 <br />
+   ④ 리스트에서 설문조사 최대 노출 갯수는 10개
+5. 삭제 버튼 <br />
+   ① 버튼 클릭 시, 해당 버튼을 삭제할 것인지에 대한 confirm 창 노출 <br />
+   ② confirm 창
+
+- 문구 : "정말 삭제하시겠습니까?"
+- "확인"버튼 클릭 시, 해당 설문조사 삭제
+- "취소"버튼 클릭 시, 아무 동작 안 함
+
+6. 페이지네이션 <br />
+   ① 다른 페이지로 이동할 수 있는 버튼
+
+---
