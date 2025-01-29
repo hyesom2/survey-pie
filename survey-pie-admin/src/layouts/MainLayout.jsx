@@ -5,14 +5,14 @@ function MainLayout({ children }) {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider>
-        <div className="demo-logo-vertical" />
-        <Menu defaultSelectedKeys={['1']} mode="inline">
-          <Menu.Item key="1">Files</Menu.Item>
+        <div className="logo" style={{ height: 64 }} />
+        <Menu theme="dark" defaultSelectedKeys={['1']}>
+          <Menu.Item key="1">설문조사 관리</Menu.Item>
         </Menu>
       </Sider>
       <Layout>
         <Header />
-        <Content style={{ margin: '0 16px' }}>{children}</Content>
+        <Content>{children}</Content>
       </Layout>
     </Layout>
   );
