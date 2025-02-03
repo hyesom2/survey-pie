@@ -1,8 +1,15 @@
 import { Layout, Menu } from 'antd';
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 const { Header, Content, Sider } = Layout;
 
+// const contentStyle = { padding: 45 };
+
 function MainLayout({ children, selectedKeys }) {
+  const contentStyle = useMemo(() => {
+    return { padding: 45 };
+  }, []);
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider>
@@ -18,7 +25,8 @@ function MainLayout({ children, selectedKeys }) {
       </Sider>
       <Layout>
         <Header />
-        <Content>{children}</Content>
+        {/* <Content style={{padding: 45/>}}>{children}</Content> */}
+        <Content style={contentStyle}>{children}</Content>
       </Layout>
     </Layout>
   );
